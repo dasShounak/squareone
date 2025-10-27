@@ -13,8 +13,12 @@ import {
       <SidebarMenuItem>
         <div class="flex justify-between items-center">
           <p>Shounak Das &copy; 2025</p>
-          <NuxtLink to="https://shattereddisk.github.io/rickroll/rickroll.mp4" external target="_blank"
-            rel="noopener noreferrer">
+          <NuxtLink
+            to="https://shattereddisk.github.io/rickroll/rickroll.mp4"
+            external
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Globe class="w-4" />
           </NuxtLink>
         </div>

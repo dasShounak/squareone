@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { Link, Unlink, ClipboardCopy, ClipboardCheck, Delete } from "lucide-vue-next";
+import { Link, ClipboardCopy, ClipboardPaste, ClipboardCheck, Delete } from "lucide-vue-next";
 import { Input } from "@/components/ui/input";
 import { Button } from "~/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
@@ -10,7 +10,6 @@ import {
   Field,
   FieldDescription,
   FieldGroup,
-  FieldLabel,
   FieldLegend,
   FieldSet,
 } from "@/components/ui/field";
@@ -47,6 +46,7 @@ const clear = () => {
 };
 
 // Clipboard
+// Copy
 const isCopied = ref(false);
 const copyButton = ref("");
 const copy = async () => {
@@ -72,6 +72,31 @@ const copy = async () => {
     console.error("Failed to copy:", err);
   }
 };
+
+// Paste
+const isPasted = ref(false);
+const pasteButton = ref("");
+const paste = async () => {
+  try {
+    await navigator.clipboard.readText().then((pasteText) => {
+      url.value = pasteText;
+      isPasted.value = true;
+      if (pasteText == "") {
+        toast.warning("Output is empty.");
+      }
+      else {
+        toast.success("Text has been pasted!");
+      }
+      setTimeout(() => {
+        isPasted.value = false;
+      }, 3000);
+    });
+  }
+  catch (err) {
+    toast.error("FAILED to paste text. Error: " + err);
+    console.error("Failed to paste:", err);
+  }
+};
 </script>
 
 <template>
@@ -82,10 +107,16 @@ const copy = async () => {
       <FieldGroup>
         <Field>
           <div class="flex gap-2 items-center">
-            <FieldLabel for="url">
-              <Unlink class="w-5 h-5" />
-            </FieldLabel>
             <ButtonGroup class="w-full">
+              <Button
+                v-model="pasteButton"
+                variant="outline"
+                class="cursor-pointer"
+                aria-label="Paste"
+                @click="paste"
+              >
+                <component :is="isPasted ? ClipboardCheck : ClipboardPaste" />
+              </Button>
               <Input
                 v-model="url"
                 type="text"
