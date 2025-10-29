@@ -21,6 +21,10 @@ const textFormatItems = [
     title: "Refang URL",
     url: "/refang",
   },
+  {
+    title: "Date Generator",
+    url: "/date-generator",
+  },
 ];
 
 const osintItems = [

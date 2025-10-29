@@ -4,7 +4,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 <template>
   <SidebarProvider>
-    <AppSidebar />
+    <AppSidebarMain />
     <main class="w-full h-screen">
       <SidebarTrigger class="fixed sm:hidden bg-slate-800 m-2 w-10 h-10" />
       <div class="h-full">
