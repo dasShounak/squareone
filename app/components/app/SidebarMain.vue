@@ -22,8 +22,8 @@ const textFormatItems = [
     url: "/refang",
   },
   {
-    title: "Date Generator",
-    url: "/date-generator",
+    title: "Date Picker",
+    url: "/date-picker",
   },
 ];
 
