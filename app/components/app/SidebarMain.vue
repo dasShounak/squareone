@@ -21,6 +21,10 @@ const textFormatItems = [
     title: "Refang URL",
     url: "/refang",
   },
+  {
+    title: "Date Picker",
+    url: "/date-picker",
+  },
 ];
 
 const osintItems = [
