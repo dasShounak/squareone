@@ -14,11 +14,11 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 
 const textFormatItems = [
   {
-    title: "Defang URL",
+    title: "Defang",
     url: "/defang",
   },
   {
-    title: "Refang URL",
+    title: "Refang",
     url: "/refang",
   },
   {

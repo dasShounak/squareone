@@ -19,19 +19,36 @@ const output = ref("");
 const refang = () => {
   let modifiedUrl = url.value.trim();
 
-  // Restore the protocol safely
-  modifiedUrl = modifiedUrl.replace(/^hxxps/, "https").replace(/^hxxp/, "http");
+  if (!modifiedUrl) {
+    output.value = "Invalid URL";
+    return;
+  }
+
+  // Restore protocol safely
+  modifiedUrl = modifiedUrl
+    .replace(/^hxxps/, "https")
+    .replace(/^hxxp/, "http");
 
   // Replace defanged [.] back to .
   modifiedUrl = modifiedUrl.replace(/\[\.\]/g, ".");
 
-  // Optional: basic sanity check (not strict URL parsing)
-  if (/^https?:\/\/[^\s/$.?#].[^\s]*$/i.test(modifiedUrl)) {
-    output.value = modifiedUrl; // Looks like a valid URL
+  // If no protocol present, temporarily add one for validation
+  const hasProtocol = /^(https?|ftp):\/\//i.test(modifiedUrl);
+  const tempUrl = hasProtocol ? modifiedUrl : `http://${modifiedUrl}`;
+
+  try {
+    // Try parsing it with URL constructor
+    const parsed = new URL(tempUrl);
+
+    // Remove protocol again if original didn't have one
+    output.value = hasProtocol
+      ? parsed.href
+      : parsed.href.replace(/^https?:\/\//, "").replace(/\/$/, "");
   }
-  else {
-    // Still show the refanged version even if it's not a valid URL
-    output.value = "Invalid URL";
+  catch (e) {
+    // Even if it's not parseable, return refanged text
+    output.value = modifiedUrl.replace(/\/^/, "");
+    console.log(e);
   }
 };
 </script>
@@ -39,8 +56,8 @@ const refang = () => {
 <template>
   <div class="max-w-2xl mx-auto pt-20 px-5">
     <FieldSet>
-      <FieldLegend>Refang URL</FieldLegend>
-      <FieldDescription>Paste the URL to be refanged in the field below.</FieldDescription>
+      <FieldLegend>Refang URL or Email</FieldLegend>
+      <FieldDescription>Paste the URL or the email address to be refanged in the field below.</FieldDescription>
       <FieldGroup>
         <Field>
           <div class="flex gap-2 items-center">
@@ -72,5 +89,11 @@ const refang = () => {
       <!-- Output -->
       <AppOutputBox :output="output" />
     </FieldSet>
+    <p class="text-sm mt-4 text-muted-foreground">
+      Want to defang instead? <NuxtLink
+        to="/defang"
+        class="text-teal-600 dark:text-teal-500 hover:underline"
+      >Click here</NuxtLink>
+    </p>
   </div>
 </template>
