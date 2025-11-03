@@ -77,14 +77,14 @@ const selected = ref("");
         <SelectItem value="ist">
           India Standard Time (IST)
         </SelectItem>
-        <SelectItem value="jst">
-          Japan Standard Time (JST)
-        </SelectItem>
         <SelectItem value="cst_china">
           China Standard Time (CST)
         </SelectItem>
         <SelectItem value="sst">
           Singapore Standard Time (SST)
+        </SelectItem>
+        <SelectItem value="jst">
+          Japan Standard Time (JST)
         </SelectItem>
       </SelectGroup>
     </SelectContent>
