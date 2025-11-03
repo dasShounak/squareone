@@ -60,7 +60,7 @@ const formatter = new DateFormatter("en-US", {
                     <span class="text-slate-500 dark:text-slate-400">Pick a date</span>
                   </Button>
                 </PopoverTrigger>
-                <AppSelectTimezone
+                <AppSelectTimezoneMain
                   v-model="timezone"
                   class="flex-1"
                 />
@@ -73,7 +73,7 @@ const formatter = new DateFormatter("en-US", {
                 <TimeFieldRoot
                   v-slot="{ segments }"
                   v-model="time"
-                  class="w-fit mx-auto mb-4 flex select-none items-center justify-center rounded-md shadow-sm text-center text-sm text-slate-200 border px-2 py-1 data-[invalid]:border-red-500"
+                  class="w-fit mx-auto mb-4 flex select-none items-center justify-center rounded-md shadow-sm text-center text-sm text-slate-700 dark:text-slate-200 border px-2 py-1 data-[invalid]:border-red-500"
                 >
                   <div
                     v-for="item in segments"
@@ -88,7 +88,7 @@ const formatter = new DateFormatter("en-US", {
                     <TimeFieldInput
                       v-else
                       :part="item.part"
-                      class="rounded p-0.5 focus:outline-none focus:border-2 focus:border-slate-400 data-[placeholder]:text-white"
+                      class="rounded p-0.5 focus:outline-none focus:border-2 focus:border-slate-500 dark:focus:border-slate-400 data-[placeholder]:text-slate-700 dark:data-[placeholder]:text-white"
                     >
                       {{ item.value }}
                     </TimeFieldInput>
