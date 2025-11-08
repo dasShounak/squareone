@@ -1,3 +1,7 @@
+![Static Badge](https://img.shields.io/badge/status-under_development-bfb139?style=for-the-badge&logo=nuxt&labelColor=grey)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fsqone.vercel.app%2F&style=for-the-badge&logo=vercel)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dasShounak/squareone?style=for-the-badge&logo=github)
+
 # Nuxt Minimal Starter
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
