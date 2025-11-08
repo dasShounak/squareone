@@ -42,7 +42,7 @@ const defang = () => {
 
     const lastDotIndex = host.lastIndexOf(".");
     const defangedHost
-      = host.slice(0, lastDotIndex) + "[.]" + host.slice(lastDotIndex + 1);
+      = host.slice(0, lastDotIndex) + "[dot]" + host.slice(lastDotIndex + 1);
 
     // Build the final defanged URL
     let defangedUrl = parsed.href.replace(host, defangedHost);
