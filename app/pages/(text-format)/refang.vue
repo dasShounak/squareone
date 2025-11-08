@@ -30,7 +30,7 @@ const refang = () => {
     .replace(/^hxxp/, "http");
 
   // Replace defanged [.] back to .
-  modifiedUrl = modifiedUrl.replace(/\[\.\]/g, ".");
+  modifiedUrl = modifiedUrl.replace(/\[\.\]/g, ".").replace(/\[dot\]/g, ".");
 
   // If no protocol present, temporarily add one for validation
   const hasProtocol = /^(https?|ftp):\/\//i.test(modifiedUrl);
