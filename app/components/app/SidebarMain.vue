@@ -30,7 +30,7 @@ const textFormatItems = [
 const osintItems = [
   {
     title: "VirusTotal",
-    url: "/comingsoon",
+    url: "/virustotal",
   },
   {
     title: "AbuseIPDB",

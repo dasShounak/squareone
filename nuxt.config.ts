@@ -14,6 +14,9 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: ""
   },
+  runtimeConfig: {
+    VT_API_KEY: process.env.VT_API_KEY,
+  },
   compatibilityDate: "2025-07-15",
   vite: {
     plugins: [
