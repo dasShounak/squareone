@@ -29,8 +29,8 @@ const textFormatItems = [
 
 const osintItems = [
   {
-    title: "VirusTotal",
-    url: "/virustotal",
+    title: "OSINT Scanner",
+    url: "/osintscanner",
   },
   {
     title: "AbuseIPDB",

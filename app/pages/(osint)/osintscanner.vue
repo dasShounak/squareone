@@ -11,19 +11,20 @@ import { Button } from "~/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { ScanEye } from "lucide-vue-next";
 
-const ip = ref("");
+const queryString = ref("");
 const result = ref<string | null>(null);
 const loading = ref(false);
 
-const scanIp = async () => {
+const scanIOC = async () => {
   result.value = null;
   loading.value = true;
 
   try {
-    const res = await $fetch<{ output: string }>("/api/virustotal/ipscan", {
-      query: { ip: ip.value }
+    const res = await $fetch<{ finalOutput: string }>("/api/virustotal/scan", {
+      query: { input: queryString.value }
     });
-    result.value = res.output;
+    result.value = res.finalOutput;
+    console.log(result.value);
   }
   catch (err) {
     console.error(`Scan Failed: ${err}`);
@@ -39,7 +40,7 @@ const scanIp = async () => {
 
 // const result = ref(null);
 
-// const scanIp = async () => {
+// const scanIOC = async () => {
 //   const options = {
 //     method: "GET",
 //     headers: {
@@ -55,37 +56,37 @@ const scanIp = async () => {
 // };
 
 // onMounted(() => {
-//   scanIp();
+//   scanIOC();
 // });
 </script>
 
 <template>
   <div class="max-w-2xl mx-auto pt-20 px-5">
     <FieldSet>
-      <FieldLegend>VirusTotal</FieldLegend>
-      <FieldDescription>Paste the IP to be scanned below.</FieldDescription>
+      <FieldLegend>OSINT Scanner</FieldLegend>
+      <FieldDescription>Paste the IP/Domain to be scanned below.</FieldDescription>
       <FieldGroup>
         <Field>
           <div class="flex gap-2 items-center">
             <ButtonGroup class="w-full">
               <AppButtonPaste
-                v-model="ip"
+                v-model="queryString"
                 variant="outline"
               />
               <Input
-                v-model="ip"
+                v-model="queryString"
                 type="text"
                 placeholder="Example: 127.0.0.1"
                 autocomplete="off"
               />
               <AppButtonClear
-                v-model="ip"
+                v-model="queryString"
                 variant="outline"
               />
             </ButtonGroup>
             <Button
               class="cursor-pointer"
-              @click="scanIp"
+              @click="scanIOC"
             >
               <ScanEye /> {{ loading ? "Scannning.." : "Scan" }}
             </Button>
@@ -93,7 +94,7 @@ const scanIp = async () => {
         </Field>
       </FieldGroup>
       <div v-if="result">
-        <AppOutputBox :output="result" />
+        <AppOutputBoxPre :output="result" />
       </div>
     </FieldSet>
   </div>
