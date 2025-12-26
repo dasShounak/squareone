@@ -14,10 +14,13 @@ const { output } = defineProps<{
   <Item variant="outline">
     <div class="flex w-full gap-2">
       <ItemTitle class="w-full">
-        <pre class="font-sans">{{ output }}</pre>
+        <pre class="font-sans whitespace-pre-wrap">{{ output }}</pre>
       </ItemTitle>
       <ItemActions>
-        <AppButtonCopy :copy-text="output" variant="secondary" />
+        <AppButtonCopy
+          :copy-text="output"
+          variant="secondary"
+        />
       </ItemActions>
     </div>
   </Item>

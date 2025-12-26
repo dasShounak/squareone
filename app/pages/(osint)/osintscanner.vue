@@ -61,7 +61,7 @@ const scanIOC = async () => {
 </script>
 
 <template>
-  <div class="max-w-2xl mx-auto pt-20 px-5">
+  <div class="max-w-3xl mx-auto pt-20 px-5">
     <FieldSet>
       <FieldLegend>OSINT Scanner</FieldLegend>
       <FieldDescription>Paste the IP/Domain to be scanned below.</FieldDescription>
