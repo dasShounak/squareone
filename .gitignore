@@ -27,3 +27,5 @@ logs
 .flaskenv*
 !.env.project
 !.env.vault
+
+app/pages/(text-format)/date-new.vue
