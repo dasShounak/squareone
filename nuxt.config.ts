@@ -16,6 +16,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     VT_API_KEY: process.env.VT_API_KEY,
+    ABDB_API_KEY: process.env.ABDB_API_KEY,
   },
   compatibilityDate: "2025-07-15",
   vite: {
