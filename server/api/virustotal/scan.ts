@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
   const attr = vtRaw?.data?.attributes;
 
   const stats = attr?.last_analysis_stats;
-  const flags = stats.malicious + stats.suspicious;
+  const flags = stats.malicious;
   const total = stats.malicious + stats.suspicious + stats.undetected + stats.harmless;
 
   const vtOutput = isIp

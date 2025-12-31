@@ -85,6 +85,7 @@ const scanIOC = async () => {
               />
             </ButtonGroup>
             <Button
+              type="submit"
               class="cursor-pointer"
               @click="scanIOC"
             >
