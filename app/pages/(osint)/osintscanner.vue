@@ -89,7 +89,7 @@ const scanIOC = async () => {
               class="cursor-pointer"
               @click="scanIOC"
             >
-              <ScanEye /> {{ loading ? "Scannning.." : "Scan" }}
+              <ScanEye /> {{ loading ? "Scanning..." : "Scan" }}
             </Button>
           </div>
         </Field>

@@ -67,9 +67,14 @@ export default defineEventHandler(async (event) => {
   const abdbOutput = abdbRes != null
     && `>> AbuseIPDB: Confidence Score: ${abdbData.abuseConfidenceScore}% | Usage: ${abdbData.usageType} | ${abdbData.countryName} | ISP: ${abdbData.isp}`;
 
+  // Output Additional Templates
+  const outputAdditionalTemplate = isIp
+    ? `>> Spur: `
+    : `>> Sucuri: \n>> IBM X-Force: `;
+
   const finalOutput = isIp
-    ? `OSINT results on "${input}":\n${vtOutput}\n${abdbOutput}`
-    : `OSINT results on "${input}":\n${vtOutput}`;
+    ? `OSINT results on "${input}":\n${vtOutput}\n${abdbOutput}\n${outputAdditionalTemplate}`
+    : `OSINT results on "${input}":\n${vtOutput}\n${outputAdditionalTemplate}`;
 
   return { finalOutput };
 });
